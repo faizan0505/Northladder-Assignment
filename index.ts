@@ -49,17 +49,26 @@ if (updatedProfileResult) {
   console.log("Updated Profile ID:", updatedProfileResult.id);
 
   // Perform operations that require the profile to be updated
-  cdp.deleteCustomerProfile(updatedProfileResult.id);
-  console.log("Deleted Profile");
 
-  const retrievedProfile = cdp.getCustomerProfileFromId(updatedProfileResult.id);
+  const retrievedProfile = cdp.getCustomerProfileFromId(
+    updatedProfileResult.id
+  );
   console.log("Retrieved Profile:", retrievedProfile);
 
   const profiles = cdp.listCustomerProfiles();
   console.log("All Profiles:", profiles);
 
+  const Pagination = cdp.listCustomerProfiles({}, 1, 1);
+  console.log("Pagination:", Pagination);
+
+  const ByName = cdp.listCustomerProfiles({}, 0, 0, "Faizan");
+  console.log("Search:", ByName);
+
   const taggedProfile = cdp.updateTag(updatedProfileResult.id, ["VIP"]);
   console.log("Tagged Profile:", taggedProfile);
+
+  cdp.deleteCustomerProfile(updatedProfileResult.id);
+  console.log("Deleted Profile");
 } else {
   console.log("Profile not found");
 }

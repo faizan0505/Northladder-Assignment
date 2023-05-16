@@ -39,9 +39,6 @@ class CustomerDataPlatform {
     deleteCustomerProfile(profileId) {
         this.customerProfiles = this.customerProfiles.filter((profile) => profile.id !== profileId);
     }
-    getCustomerProfileById(profileId) {
-        return this.customerProfiles.find((profile) => profile.id === profileId);
-    }
     listCustomerProfiles(filters = {}, limit, page, search) {
         let filteredProfiles = this.customerProfiles.filter((profile) => this.matchesFilter(profile, filters));
         if (search) {

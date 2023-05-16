@@ -60,10 +60,6 @@ export class CustomerDataPlatform {
     );
   }
 
-  getCustomerProfileById(profileId: string): CustomerProfile | undefined {
-    return this.customerProfiles.find((profile) => profile.id === profileId);
-  }
-
   listCustomerProfiles(
     filters: Partial<CustomerProfile> = {},
     limit?: number,
